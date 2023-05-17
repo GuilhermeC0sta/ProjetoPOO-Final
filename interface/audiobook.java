@@ -1,5 +1,5 @@
 public class audiobook extends ItemsBiblioteca {
-    private LivroEstado state;
+
     private String autor;
     private int duracao;
     private String genero;
@@ -9,18 +9,13 @@ public class audiobook extends ItemsBiblioteca {
 
     public audiobook(String titulo, String autor, int duracao, int qnt_disp, String genero, int id_audio) {
         super(titulo, qnt_disp);
+
         this.titulo = titulo;
         this.duracao = duracao;
         this.autor = autor;
         this.genero = genero;
         this.id_audio = id_audio;
         this.qntd_disp = qnt_disp;
-        if(qntd_disp > 0){
-            state = new AvailableState();
-        }
-        else{
-            state = new OutOfStockState();
-        }
     }
 
     @Override
@@ -41,6 +36,19 @@ public class audiobook extends ItemsBiblioteca {
         return duracao;
     }
 
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
     public String getGenero() {
         return genero;
     }
@@ -50,29 +58,15 @@ public class audiobook extends ItemsBiblioteca {
         return qntd_disp;
     }
 
-    private void updateState() {
-        if (qntd_disp == 0) {
-            state = new OutOfStockState();
-        } else {
-            state = new AvailableState();
-        }
+    @Override
+    public void locar() {
+        System.out.println("\nVocê conseguiu locar um livro! Devolva dentro de 10 dias.\n");
+        System.out.println(" Este livro possui as seguintes especificações: ");
+        System.out.println(" Título: " + getTitulo()); // qlqr coisa usa o this
+        System.out.println(" Autor: " + autor);
+        System.out.println(" duracao: " + duracao);
+        System.out.println(" Genero: " + genero);
+        System.out.println(" Quantidade disponível: " + getQnt_disp() + "\n");
     }
 
-    public void rent() {
-        if (state.isAvailable()) {
-            this.qntd_disp--;
-            updateState();
-        } else {
-            throw new IllegalStateException("Livro não disponível para aluguel.");
-        }
-    }
-
-    public void returnbook() {
-        this.qntd_disp++;
-        updateState();
-    }
-
-    public boolean isAvailable() {
-        return state.isAvailable();
-    }
 }

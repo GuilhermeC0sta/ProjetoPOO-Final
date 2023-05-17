@@ -3,7 +3,7 @@ public abstract class ItemsBiblioteca {
     private String titulo;
     private String autor;
     private String genero;
-    protected int qntd_disp;
+    private int qntd_disp;
     private int isbn;
 
     public ItemsBiblioteca(String titulo, int qntd_disp) {
@@ -42,4 +42,7 @@ public abstract class ItemsBiblioteca {
     public int getQnt_disp() {
         return qntd_disp;
     }
+
+    public abstract void locar();
+
 }

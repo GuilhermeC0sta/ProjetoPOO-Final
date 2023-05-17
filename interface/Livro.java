@@ -1,5 +1,5 @@
 public class Livro extends ItemsBiblioteca {
-    private LivroEstado state;
+
     private String autor;
     private int isbn;
     private String genero;
@@ -7,16 +7,11 @@ public class Livro extends ItemsBiblioteca {
 
     public Livro(String titulo, String autor, int isbn, int qntd_disp, String genero) {
         super(titulo, qntd_disp);
+
         this.titulo = titulo;
         this.isbn = isbn;
         this.autor = autor;
         this.genero = genero;
-        if(qntd_disp > 0){
-            state = new AvailableState();
-        }
-        else{
-            state = new OutOfStockState();
-        }
     }
 
     @Override
@@ -44,29 +39,15 @@ public class Livro extends ItemsBiblioteca {
         return titulo;
     }
 
-    private void updateState() {
-        if (qntd_disp == 0) {
-            state = new OutOfStockState();
-        } else {
-            state = new AvailableState();
-        }
-    }
+    @Override
+    public void locar() {
 
-    public void RentLivro() {
-        try{
-            int qntd_temp = state.rent(qntd_disp);
-            this.qntd_disp = qntd_temp;
-            updateState();
-        }catch(IllegalStateException e){
-        }
-    }
-
-    public void returnbookLivro() {
-        qntd_disp = state.returnbook(qntd_disp);
-        updateState();
-    }
-
-    public boolean isAvailable() {
-        return state.isAvailable();
+        System.out.println("\nVocê conseguiu locar um livro! Devolva dentro de 10 dias.\n");
+        System.out.println(" Este livro possui as seguintes especificações: ");
+        System.out.println(" Título: " + getTitulo());
+        System.out.println(" Autor: " + autor);
+        System.out.println(" Isbn: " + isbn);
+        System.out.println(" Genero: " + genero);
+        System.out.println(" Quantidade disponível: " + getQnt_disp() + "\n");
     }
 }

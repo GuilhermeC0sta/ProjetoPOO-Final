@@ -1,6 +1,6 @@
 public abstract class conta {
 
-    private String email, senha, nome; // tinha um index user, mas foi removido
+    private String email, senha, nome, planoesc; // tinha um index user, mas foi removido
     private int id, biostam = 0;
 
     public conta(String email, String senha, String nome, int id) {
@@ -27,6 +27,7 @@ public abstract class conta {
     }
 
     public void defPlano(String planoesc) {
+        this.planoesc = planoesc;
     }
 
     public String getPlano() {
