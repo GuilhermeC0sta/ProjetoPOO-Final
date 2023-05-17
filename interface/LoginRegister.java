@@ -29,7 +29,7 @@ public class LoginRegister extends JFrame implements ActionListener {
 
         JPanel panel = new JPanel(new GridLayout(4, 2));
         JPanel imagePanel = new JPanel();
-        JLabel imageLabel = new JLabel(new ImageIcon("C:/Users/Junior/Desktop/Libraric/POO-Interface/interface/lib2.jpg"));
+        JLabel imageLabel = new JLabel(new ImageIcon("./interface/lib2.jpg"));
         imageLabel.setPreferredSize(new Dimension(350, 250));
         imagePanel.add(imageLabel);
 
@@ -85,7 +85,8 @@ public class LoginRegister extends JFrame implements ActionListener {
 
     public int getIndexConta(String nomeUsuario, String senha) {
         for (int i = 0; i < LoginRegister.contas.size(); i++) {
-            if (LoginRegister.contas.get(i).getEmail().equals(nomeUsuario) && LoginRegister.contas.get(i).getSenha().equals(senha)) {
+            if (LoginRegister.contas.get(i).getEmail().equals(nomeUsuario)
+                    && LoginRegister.contas.get(i).getSenha().equals(senha)) {
                 return i;
             }
         }
