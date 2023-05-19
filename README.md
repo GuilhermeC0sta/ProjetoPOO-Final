@@ -1,5 +1,8 @@
 ##### Alunos: Micael Silva, José Janio, João Pedro Castelo e Guilherme de Oliveira.
 
+#### Para rodar o código, basta executar o arquivo LoginRegister.java
+
+
 ## Code Smells observados no código:
 
 ### Classe login_register:
